@@ -1,37 +1,47 @@
 // Shared LLM Configuration for AI Insights
-// This file can be imported by any submodule that needs LLM capabilities
+// This file loads configuration from llm-config.json and provides it to all submodules
 
-const LLM_CONFIGS = [
-    {
-        id: 'claude',
-        name: 'Claude',
-        cacheKey: 'claudeInsightsCache',
-        // Custom settings for Claude
-        usesCliInstead: true, // Uses Claude Code CLI instead of API
-        defaultModel: 'claude-sonnet-4-5'
-    },
-    {
-        id: 'gemini',
-        name: 'Gemini',
-        cacheKey: 'geminiInsightsCache',
-        // Custom settings for Gemini
-        defaultModel: 'gemini-pro',
-        requiresApiKey: 'GEMINI_API_KEY'
-    },
-    {
-        id: 'openai',
-        name: 'OpenAI',
-        cacheKey: 'openaiInsightsCache',
-        // Custom settings for OpenAI
-        defaultModel: 'gpt-4-turbo-preview',
-        requiresApiKey: 'OPENAI_API_KEY'
+let LLM_CONFIGS = [];
+let LLM_API_ENDPOINT = '/api/insights/analyze';
+let LLM_CONFIG_LOADED = false;
+
+// Load configuration from JSON file
+async function loadLLMConfig() {
+    if (LLM_CONFIG_LOADED) return;
+
+    try {
+        const response = await fetch('/docker/js/llm-config.json');
+        if (!response.ok) {
+            throw new Error(`Failed to load LLM config: ${response.status}`);
+        }
+
+        const config = await response.json();
+        LLM_CONFIGS = config.llms || [];
+        LLM_API_ENDPOINT = config.apiEndpoint || '/api/insights/analyze';
+        LLM_CONFIG_LOADED = true;
+
+        console.log('✅ LLM configuration loaded:', LLM_CONFIGS.length, 'providers');
+    } catch (error) {
+        console.error('❌ Failed to load LLM configuration:', error);
+        // Fallback to minimal config
+        LLM_CONFIGS = [
+            {
+                id: 'gemini',
+                name: 'Gemini',
+                cacheKey: 'geminiInsightsCache',
+                defaultModel: 'gemini-1.5-flash',
+                requiresApiKey: 'GEMINI_API_KEY'
+            }
+        ];
     }
-];
+}
 
-// Generic API endpoint (single endpoint for all LLMs)
-const LLM_API_ENDPOINT = '/api/insights/analyze';
+// Auto-load configuration when script loads
+if (typeof window !== 'undefined') {
+    loadLLMConfig();
+}
 
 // Export for use in modules
 if (typeof module !== 'undefined' && module.exports) {
-    module.exports = { LLM_CONFIGS, LLM_API_ENDPOINT };
+    module.exports = { LLM_CONFIGS, LLM_API_ENDPOINT, loadLLMConfig };
 }
