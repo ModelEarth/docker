@@ -5,7 +5,6 @@ const LLM_CONFIGS = [
     {
         id: 'claude',
         name: 'Claude',
-        buttonClass: 'btn-secondary',
         cacheKey: 'claudeInsightsCache',
         // Custom settings for Claude
         usesCliInstead: true, // Uses Claude Code CLI instead of API
@@ -14,7 +13,6 @@ const LLM_CONFIGS = [
     {
         id: 'gemini',
         name: 'Gemini',
-        buttonClass: 'btn-primary',
         cacheKey: 'geminiInsightsCache',
         // Custom settings for Gemini
         defaultModel: 'gemini-pro',
@@ -23,7 +21,6 @@ const LLM_CONFIGS = [
     {
         id: 'openai',
         name: 'OpenAI',
-        buttonClass: 'btn-secondary',
         cacheKey: 'openaiInsightsCache',
         // Custom settings for OpenAI
         defaultModel: 'gpt-4-turbo-preview',
