@@ -26,6 +26,29 @@ site:
   platform_id: "my-site-default"
 
 
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+
+app_title: Edit My Page
+
+backend:
+  name: github
+  repo: modelearth/webroot
+
+media_folder: /public/media
+public_folder: /media
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: /content/posts
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Date, name: date, widget: datetime, type: date }
+      - { label: Body, name: body, widget: richtext }
+
+# THe above works in Sveltia CMS, but Loren is still working on this ...    
+
 # CMS — Netlify-Decap-Sveltia runtime config
 # Values are injected into config.yaml at deploy time, keeping webroot.yaml
 # the single source of truth for both hosting and CMS behavior.
