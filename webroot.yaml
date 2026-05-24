@@ -52,6 +52,7 @@ sites:
     base_url: "https://model.georgia.org"
     domain_contains: "model.georgia.org"
     favicon: "/localsite/img/logo/states/GA-favicon.png"
+    sideNavLocal: false
     sideNavLive: false
   model.maine:
     title: "Model Maine"
