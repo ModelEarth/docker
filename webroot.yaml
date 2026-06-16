@@ -293,6 +293,21 @@ functions:
       memory: 256           # MB
 
 
+# AUTH — shared sign-in UI and OAuth API, hosted in the chat repo.
+# See chat/auth/README.md for architecture, URL resolution, and the /chat prefix.
+# Secrets belong in .env, not here.
+auth:
+  enabled: true
+  source_repo: "chat"
+  modal_url_development: "/chat/auth/js/auth-modal.js"
+  modal_url_production: "https://modelearth.vercel.app/auth/js/auth-modal.js"
+  plugin_url_development: "/chat/auth/js/auth-plugin.js"
+  plugin_url_production: "https://modelearth.vercel.app/auth/js/auth-plugin.js"
+  # API runs on port 3700 (Node server), never on a static file server port.
+  api_url_development: "http://localhost:3700/api"
+  api_url_production: "https://api.model.earth/api"
+
+
 # ENVIRONMENT — non-secret variables safe to commit
 # Secrets belong in .env — never in webroot.yaml.
 # Equivalent to [build.environment] in netlify.toml and "env" in vercel.json.
