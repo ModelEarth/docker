@@ -305,7 +305,7 @@ auth:
   plugin_url_production: "https://modelearth.vercel.app/auth/js/auth-plugin.js"
   # API runs on port 3700 (Node server), never on a static file server port.
   api_url_development: "http://localhost:3700/api"
-  api_url_production: "https://api.model.earth/api"
+  api_url_production: "https://modelearth.vercel.app/api"
 
 
 # ENVIRONMENT — non-secret variables safe to commit
