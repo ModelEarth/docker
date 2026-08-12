@@ -13,7 +13,7 @@
       "name": "Claude",
       "cacheKey": "claudeInsightsCache",
       "defaultModel": "claude-sonnet-4-5",
-      "requiresApiKey": "CLAUDE_API_KEY",
+      "requiresApiKey": "ANTHROPIC_API_KEY",
       "keyInfo": {
         "description": "Your API key will be stored in your browser cache.",
         "link": "https://console.anthropic.com/settings/keys",
