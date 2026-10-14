@@ -2,7 +2,7 @@
 
 > **Discontinued:** this repo is no longer the home of shared webroot settings.
 > - Secrets: `docker/.env` is replaced by the `.env` named by `env_file` in `automation/paths.yaml` (kept outside webroot). Template: `automation/.env.example`.
-> - Site config: `webroot.yaml` and `webroot.md` moved to the `home` repo (`home/webroot.yaml`).
+> - Site config: `webroot.yaml` moved to the `home` repo, and from there to the webroot's `support/site/config.yaml`.
 > - LLM config: `js/llm-configs.js`, `js/llm-config.json` and `js/llm-config.md` moved to the `keys` repo (`keys/js/`).
 >
 > The `.env` sections below are kept for reference only.
