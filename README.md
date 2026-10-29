@@ -252,8 +252,8 @@ docker-compose up -d postgres
 
 ### 1. Shared  `docker/.env` File (Docker Compose Substitution)
 
-The webroot's default settings reside in `docker/.env`
-To initially create `docker/.env`, copy the `docker/.env.example` file.
+The webroot's default settings now reside in the `.env` named by `env_file` in `automation/paths.yaml`.
+To create a `docker/.env` for Docker Compose, copy the `automation/.env.example` file.
 
 The .env file contains variables used for **variable substitution** in `docker-compose.yml`:
 
